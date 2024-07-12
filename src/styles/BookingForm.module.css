@@ -1,0 +1,119 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+  
+  .formSection {
+    flex: 2;
+  }
+
+  @media screen and (max-width:770px) {
+   .container{
+    display: block;
+   }
+
+   .contactSection{
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+   
+  }
+
+  .formSection p{
+    text-align: left;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 15px;
+    font-size: 20px;
+  }
+  
+  .contactSection {
+    flex: 30px;
+    background-color: #21252b;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  .contactSection h3{
+    padding: 10px;
+    text-align: left;
+    font-size: 20px;
+  }
+
+  .contactSection h4{
+    padding: 10px;
+    text-align: left;
+    font-size: 18px;
+    color: orange;
+  }
+
+  .contactSection p{
+    text-align: left;
+    font-size: 18px;
+    padding-left:10px ;
+  }
+
+  .contactSection p:hover{
+    color: rgb(155, 155, 198);
+    cursor: pointer;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .formGroup label {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .formGroup input,
+  .formGroup select,
+  .formGroup textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .formGroup textarea {
+    resize: vertical;
+  }
+  
+  .buttonContainer {
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .buttonContainer button {
+    padding: 10px 20px;
+    background-color: #0079a5;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .buttonContainer button:hover {
+    background-color: #005f7c;
+  }
+  
+
+  .formSection h2{
+    font-size: 2vw;
+    font-weight: 600;
+  }
+
+
+  .formgroup_protect{
+    flex-direction: row;
+    align-items:center
+  }
