@@ -31,7 +31,7 @@ const analyticsIcons = [{
     return (
       <EuiFlexItem key={index}>
         <EuiCard
-          style={{ padding: '50px' }}
+          style={{ padding: '50px',height:'150px' }}
           title={<span style={{ fontSize: '30px' }}>{item.title}</span>}
           description={<span style={{ fontSize: "20px" }}>{item.description}</span>}
         />

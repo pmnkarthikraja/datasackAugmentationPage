@@ -7,7 +7,6 @@ import { EuiCard, EuiFlexGroup, EuiFlexItem, EuiImage, EuiPage, EuiPageBody } fr
 import Head from "next/head";
 import { Fragment, FunctionComponent } from "react";
 
-
 const Home:FunctionComponent =() => {
   const analyticsIcons = [{
     id: 1,
