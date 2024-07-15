@@ -51,6 +51,7 @@ const Benefits:FunctionComponent = () => {
                     {benefitsSection1.map((benefit,idx)=>(
                           <EuiFlexItem key={idx} className="custom-flex-item">
                           <article key={idx} className="card" >
+                            <img className="card__background" src="/background_benefit_card.jpg" alt="Background_Benefit" />
                               <div key={idx}>
                                   <div key={idx} className="card__content--container | flow" >
                                       <h2 key={idx} className="card__title">{benefit.title}</h2>
@@ -70,6 +71,7 @@ const Benefits:FunctionComponent = () => {
                 {benefitsSection2.map((benefit,idx)=>(
                           <EuiFlexItem key={idx} className="custom-flex-item">
                           <article key={idx} className="card" >
+                          <img className="card__background" src="/background_benefit_card.jpg" alt="Background_Benefit" />
                               <div key={idx}>
                                   <div key={idx} className="card__content--container | flow" >
                                       <h2 key={idx} className="card__title">{benefit.title}</h2>

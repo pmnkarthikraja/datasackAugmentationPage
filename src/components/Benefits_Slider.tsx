@@ -64,6 +64,7 @@ const BenefitsSlider = () => (
                     {benefits.map((benefit, index) => (
                          <div key={index} className="benefit-card-wrapper">
                        <article className="card card-mobile benefit-card">
+                       <img className="card__background" src="/background_benefit_card.jpg" alt="Background_Benefit" />
                        <div>
                            <div className="card__content--container | flow">
                                <h2 className="card__title" style={{fontSize:'4vw'}}>{benefit.title}</h2>
