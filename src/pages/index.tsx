@@ -1,6 +1,7 @@
 import AnalyticsSlider from "@/components/Analytics_Slider";
 import Benefits from "@/components/Benefits";
 import BenefitsSlider from "@/components/Benefits_Slider";
+import FabButton from "@/components/FabButton";
 import HeaderComponent from "@/components/Header";
 import Pricing from "@/components/Pricing";
 import { EuiCard, EuiFlexGroup, EuiFlexItem, EuiImage, EuiPage, EuiPageBody } from "@elastic/eui";
@@ -32,11 +33,19 @@ const Home:FunctionComponent =() => {
         <meta title="title" content="IT Staff Augmentation Services Riyadh | Fill Your Skill Gaps Fast" />
         <meta name="description" content="Get the right talent at the right price. Find DataSack's IT Staff Augmentation Services Riyadh. Resolve skill shortages for project excellence." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content="IT Staff Augmentation Services Riyadh | Fill Your Skill Gaps Fast" />
+        <meta property="og:description" content="Get the right talent at the right price. Find DataSack's IT Staff Augmentation Services Riyadh. Resolve skill shortages for project excellence." />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="IT Staff Augmentation Services Riyadh | Fill Your Skill Gaps Fast" />
+        <meta property="og:locale" content="en_US" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <EuiPage style={{ background: 'black' }}>
         <EuiPageBody>
           <HeaderComponent />
+          <div>
+            <FabButton/>
+          </div>
           <div className="image-shadow">
           <EuiImage className="background-img" src="/Resources_crop.jpg" alt="backgorund" />
           </div>
@@ -89,6 +98,7 @@ const Home:FunctionComponent =() => {
             <Pricing />
             </div>
           </div>
+        
         </EuiPageBody>
       </EuiPage>
     </Fragment>
