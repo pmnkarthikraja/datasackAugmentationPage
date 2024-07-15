@@ -13,18 +13,7 @@ import { Fragment, FunctionComponent, useState } from 'react';
 import EnquiryModal from './EnquiryModal';
 
 const HeaderComponent: FunctionComponent = () => {
-    const [isFlyoutVisible, setIsFlyoutVisible] = useState(false);
     const [isModalOpen,setIsModalOpen]=useState(false)
-
-    const toggleFlyout = () => {
-        setIsFlyoutVisible(!isFlyoutVisible);
-    };
-
-    const closeFlyout = () => {
-        setIsFlyoutVisible(false);
-    };
-
-
 
     const HeaderContainer = styled.div`
     display: flex;
@@ -33,9 +22,7 @@ const HeaderComponent: FunctionComponent = () => {
     text-align:center;
     align-items:center;
     width: 100%;
-    background-color: transparent;
-
-   
+    background-color: rgba(0, 0, 0, 0.5);
   `;
 
     const HeaderLink = styled(EuiHeaderLink)`
@@ -67,10 +54,10 @@ const HeaderComponent: FunctionComponent = () => {
      }
     }
   `;
-
+  
     return (
      <Fragment>
-            <EuiHeader style={{ background: 'transparent',border:'none',height:'80px' }} position="fixed" >
+            <EuiHeader style={{ background: 'transparent',border:'none',height:'60px' }}  position="fixed" >
                 <HeaderContainer>
                     <EuiFlexItem grow={false} className="logo-item">
                       <EuiImage className='logo-item' src='/logo.png' alt='logo' style={{width:'150px'}} />

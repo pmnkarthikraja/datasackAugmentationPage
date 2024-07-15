@@ -2,8 +2,9 @@ import AnalyticsSlider from "@/components/Analytics_Slider";
 import Benefits from "@/components/Benefits";
 import BenefitsSlider from "@/components/Benefits_Slider";
 import FabButton from "@/components/FabButton";
+import Footer from "@/components/Footer";
 import HeaderComponent from "@/components/Header";
-import Pricing from "@/components/Pricing";
+import PricingPage from "@/components/Pricing";
 import { EuiCard, EuiFlexGroup, EuiFlexItem, EuiImage, EuiPage, EuiPageBody } from "@elastic/eui";
 import Head from "next/head";
 import { Fragment, FunctionComponent } from "react";
@@ -55,7 +56,7 @@ const Home:FunctionComponent =() => {
             className="title"
           >Explore IT Staff Augmentation Services Riyadh</h1>
 
-          <div className="analytics-section">
+          <div id="analytics-section" className="analytics-section">
             <div style={{ paddingBottom: '50px' }}>
               <EuiCard hasBorder={false} title="Augment your software team with IT professionals via IT Team Augmentation Services Riyadh." />
             </div>
@@ -92,13 +93,10 @@ const Home:FunctionComponent =() => {
             </div>
 
             <div id="window-pricing">
-            <div className="benefit-left-section">
-                <h2>Craft your own<span style={{ color: 'orange'}}> pricing</span></h2>
-            </div>
-            <Pricing />
+            <PricingPage />
             </div>
           </div>
-        
+        <Footer/>
         </EuiPageBody>
       </EuiPage>
     </Fragment>
