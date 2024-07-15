@@ -47,10 +47,10 @@ const Benefits:FunctionComponent = () => {
                 <p >IT Staff Augmentation Services Riyadh provided by Datasack Solutions are advantageous as they offer the following benefits.</p>
             </div>
             <div className="benefit-content-wrapper">
-                <EuiFlexGroup  responsive={true} wrap>
+                <EuiFlexGroup alignItems="center"  justifyContent="center" responsive={true} wrap>
                     {benefitsSection1.map((benefit,idx)=>(
                           <EuiFlexItem key={idx} className="custom-flex-item">
-                          <article key={idx} className="card" >
+                          <article key={idx} className="card"  >
                             <img className="card__background" src="/background_benefit_card.jpg" alt="Background_Benefit" />
                               <div key={idx}>
                                   <div key={idx} className="card__content--container | flow" >
@@ -67,7 +67,7 @@ const Benefits:FunctionComponent = () => {
 
                 {/* ----------------------next section--------------------- */}
                 <div style={{ height: '50px' }}></div>
-                <EuiFlexGroup responsive wrap>
+                <EuiFlexGroup alignItems="center"  justifyContent="center" responsive={true} wrap>
                 {benefitsSection2.map((benefit,idx)=>(
                           <EuiFlexItem key={idx} className="custom-flex-item">
                           <article key={idx} className="card" >

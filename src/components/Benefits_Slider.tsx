@@ -62,13 +62,13 @@ const BenefitsSlider = () => (
             <div className="benefit-slider">
                 <Slider {...settings}>
                     {benefits.map((benefit, index) => (
-                         <div key={index} className="benefit-card-wrapper">
-                       <article className="card card-mobile benefit-card">
-                       <img className="card__background" src="/background_benefit_card.jpg" alt="Background_Benefit" />
+                         <div key={index} className="benefit-card-wrapper-mobile">
+                       <article className="card-mobile benefit-card">
+                       <img className="card__background-mobile" src="/background_benefit_card.jpg" alt="Background_Benefit" />
                        <div>
-                           <div className="card__content--container | flow">
-                               <h2 className="card__title" style={{fontSize:'4vw'}}>{benefit.title}</h2>
-                               <p className="card__description">
+                           <div >
+                               <h3>{benefit.title}</h3>
+                               <p>
                               {benefit.description}
                                </p>
                            </div>
