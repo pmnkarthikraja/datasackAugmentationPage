@@ -1,8 +1,6 @@
 import {
     EuiFlexGroup,
     EuiFlexItem,
-    EuiHeaderLink,
-    EuiIcon,
     EuiLink,
     EuiSpacer,
     EuiText,
