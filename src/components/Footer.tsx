@@ -84,7 +84,7 @@ const Footer = () => {
                         <br />
                         <EuiLink href="mailto:info@company.com" className={styles.footer_link}>info@company.com</EuiLink>
                         <br />
-                        <EuiLink href="tel:+1234567890" className={styles.footer_link}>+966-560858596</EuiLink>
+                        <EuiLink href="tel:+966560858596" className={styles.footer_link}>+966-560858596</EuiLink>
                     </EuiText>
                 </EuiFlexItem>
             </EuiFlexGroup>
