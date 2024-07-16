@@ -117,3 +117,42 @@
     flex-direction: row;
     align-items:center
   }
+
+  .error {
+    color: red;
+    font-weight: 200;
+    font-size: 3px;
+  }
+
+  .buttonContainer {
+    text-align: center;
+  }
+
+  .mainCategory {
+    display: flex;
+    cursor: pointer;
+    color: orange;
+}
+
+.categoryWrapper{
+  padding: 5px;
+}
+
+.subCategories {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.subCategories.show {
+    max-height: 300px; 
+    transition: max-height 0.3s ease-in-out;
+}
+
+.subCategory{
+  color: whitesmoke;
+}
+
+.hide {
+    display: none;
+}

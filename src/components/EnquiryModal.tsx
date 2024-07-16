@@ -4,23 +4,28 @@ import {
   EuiModalHeader,
   useGeneratedHtmlId
 } from '@elastic/eui';
-import { FunctionComponent } from 'react';
+import { Fragment, FunctionComponent } from 'react';
 import BookingForm from './BookingForm';
+import { CuratedTechnologyData } from './Pricing';
 
 export interface EnquiryModalProps {
   isOpen: boolean
   closeModal: (isClose: boolean) => void
-  selectedTechnologies?:{ [key: string]: number }
+  selectedTechnologies?:CuratedTechnologyData
+  selectedRawTechData?:{ [key: string]: number }
 }
 
 const EnquiryModal: FunctionComponent<EnquiryModalProps> = ({
   isOpen,
   closeModal,
+  selectedTechnologies,
+  selectedRawTechData
 }) => {
   const modalTitleId = useGeneratedHtmlId();
 
+
   return (
-    <>
+    <Fragment>
       {isOpen && (
         <EuiModal
           aria-labelledby={modalTitleId}
@@ -30,11 +35,11 @@ const EnquiryModal: FunctionComponent<EnquiryModalProps> = ({
           <EuiModalHeader>
           </EuiModalHeader>
           <EuiModalBody >
-            <BookingForm  />
+            <BookingForm selectedTechnologies={selectedTechnologies}  selectedRawTechData={selectedRawTechData}/>
           </EuiModalBody>
         </EuiModal>
       )}
-    </>
+    </Fragment>
   );
 };
 

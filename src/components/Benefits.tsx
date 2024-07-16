@@ -10,7 +10,7 @@ const benefitsSection1 = [
     },
     {
         title: "Flexible Workforce",
-        description: "IT team augmentation services Riyadh increases financial flexibility by converting fixed costs to variable costs, hiring workers for specific durations. This ensures optimal budget management, paying for necessary expertise.",
+        description: "IT team augmentation services in Dammam and Riyadh increases financial flexibility by converting fixed costs to variable costs, hiring workers for specific durations. This ensures optimal budget management, paying for necessary expertise.",
         backgroundImageUrl: '/benefits/2_Flexible_Workforce.jpg'
     },
     {
@@ -20,7 +20,7 @@ const benefitsSection1 = [
     },
     {
         title: "Rapid Expansion",
-        description: "Accelerate growth by scaling up IT staff augmentation services Riyadh to meet demand efficiently. This proactive approach ensures timely service delivery, enhancing customer satisfaction and seizing market opportunities.",
+        description: "Accelerate growth by scaling up IT staff augmentation services in Dammam and Riyadh to meet demand efficiently. This proactive approach ensures timely service delivery, enhancing customer satisfaction and seizing market opportunities.",
         backgroundImageUrl: '/benefits/4_Rapid_Expansion.png'
     },
 ]
@@ -28,7 +28,7 @@ const benefitsSection1 = [
 const benefitsSection2 = [
     {
         title: "Core Focus",
-        description: "Our IT resource augmentation services Riyadh optimize productivity by outsourcing non-core tasks to contingent workers, freeing resources for core business activities and enhancing operational efficiency for our clients.",
+        description: "Our IT resource augmentation services in Dammam and Riyadh optimize productivity by outsourcing non-core tasks to contingent workers, freeing resources for core business activities and enhancing operational efficiency for our clients.",
         backgroundImageUrl: '/benefits/5_Core_Focus.png'
     },
     {
@@ -43,7 +43,7 @@ const benefitsSection2 = [
     },
     {
         title: 'Resource Deployment',
-        description: "IT staff augmentation services Riyadh deploy our resources in India to meet business needs. This strategic advantage ensures swift adaptation to market demands, enhancing operational agility and client satisfaction.",
+        description: "IT staff augmentation services in Dammam and Riyadh deploy our resources in India to meet business needs. This strategic advantage ensures swift adaptation to market demands, enhancing operational agility and client satisfaction.",
         backgroundImageUrl: '/benefits/8_Resource_Deployment.png'
     }
 ]
@@ -51,15 +51,14 @@ const benefitsSection2 = [
 const Benefits: FunctionComponent = () => {
     return <div className="benefit-section-wrapper" id="benefit-section">
         <div className="benefit-left-section">
-            <h2>Benefits of <span style={{ color: 'orange' }}>IT Resource Augmentation</span> Services in Riyadh</h2>
-            <p >IT Staff Augmentation Services Riyadh provided by Datasack Solutions are advantageous as they offer the following benefits.</p>
+            <h2>Benefits of <span style={{ color: 'orange' }}>IT Resource Augmentation</span> Services in Dammam and Riyadh</h2>
+            <p >IT Staff Augmentation Services in Dammam and Riyadh provided by Datasack Solutions are advantageous as they offer the following benefits.</p>
         </div>
         <div className="benefit-content-wrapper">
             <EuiFlexGroup alignItems="center" justifyContent="center" responsive={true} wrap>
                 {benefitsSection1.map((benefit, idx) => (
                     <EuiFlexItem key={idx} className="custom-flex-item">
                         <article key={idx} className="card">
-                            {/* <img className="card__background" src="/background_benefit_card.jpg"  alt="Background_Benefit" /> */}
                             <img className="card__background" src={benefit.backgroundImageUrl} alt="Background_Benefit" />
                             <div key={idx}>
                                 <div key={idx} className="card__content--container | flow" >
@@ -80,7 +79,6 @@ const Benefits: FunctionComponent = () => {
                 {benefitsSection2.map((benefit, idx) => (
                     <EuiFlexItem key={idx} className="custom-flex-item">
                         <article key={idx} className="card" >
-                            {/* <img className="card__background" src="/background_benefit_card.jpg" alt="Background_Benefit" /> */}
                             <img className="card__background" src={benefit.backgroundImageUrl} alt="Background_Benefit" />
                             <div key={idx}>
                                 <div key={idx} className="card__content--container | flow" >

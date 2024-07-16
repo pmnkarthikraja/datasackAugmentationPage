@@ -22,7 +22,7 @@ const HeaderComponent: FunctionComponent = () => {
     text-align:center;
     align-items:center;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0);
   `;
 
     const HeaderLink = styled(EuiHeaderLink)`
@@ -33,7 +33,7 @@ const HeaderComponent: FunctionComponent = () => {
     border:none;
     transition: color 0.3s ease;
     padding-right:10px;
-    background:rgba(143, 133, 200, 0.205);
+    background:rgba(0, 0, 0, 0.505);
     padding-left:10px;
     text-decoration:none;
     font-size:18px;

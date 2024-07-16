@@ -29,7 +29,7 @@ const benefits = [
     },
     {
         title: "Flexible Workforce",
-        description: "IT team augmentation services Riyadh increases financial flexibility by converting fixed costs to variable costs, hiring workers for specific durations. This ensures optimal budget management, paying for necessary expertise.",
+        description: "IT team augmentation services in Dammam and Riyadh increases financial flexibility by converting fixed costs to variable costs, hiring workers for specific durations. This ensures optimal budget management, paying for necessary expertise.",
         backgroundImageUrl: '/benefits/2_Flexible_Workforce.jpg'
     },
     {
@@ -39,12 +39,12 @@ const benefits = [
     },
     {
         title: "Rapid Expansion",
-        description: "Accelerate growth by scaling up IT staff augmentation services Riyadh to meet demand efficiently. This proactive approach ensures timely service delivery, enhancing customer satisfaction and seizing market opportunities.",
+        description: "Accelerate growth by scaling up IT staff augmentation services in Dammam and Riyadh to meet demand efficiently. This proactive approach ensures timely service delivery, enhancing customer satisfaction and seizing market opportunities.",
         backgroundImageUrl: '/benefits/4_Rapid_Expansion.png'
     },
     {
         title: "Core Focus",
-        description: "Our IT resource augmentation services Riyadh optimize productivity by outsourcing non-core tasks to contingent workers, freeing resources for core business activities and enhancing operational efficiency for our clients.",
+        description: "Our IT resource augmentation services in Dammam and Riyadh optimize productivity by outsourcing non-core tasks to contingent workers, freeing resources for core business activities and enhancing operational efficiency for our clients.",
         backgroundImageUrl: '/benefits/5_Core_Focus.png'
     },
     {
@@ -59,7 +59,7 @@ const benefits = [
     },
     {
         title: 'Resource Deployment',
-        description: "IT staff augmentation services Riyadh deploy our resources in India to meet business needs. This strategic advantage ensures swift adaptation to market demands, enhancing operational agility and client satisfaction.",
+        description: "IT staff augmentation services in Dammam and Riyadh deploy our resources in India to meet business needs. This strategic advantage ensures swift adaptation to market demands, enhancing operational agility and client satisfaction.",
         backgroundImageUrl: '/benefits/8_Resource_Deployment.png'
     }
 ]
@@ -73,7 +73,6 @@ const BenefitsSlider = () => (
                          <div key={index} className="benefit-card-wrapper-mobile">
                        <article className=" card-mobile benefit-card">
                        <img className="card__background-mobile" src="/background_benefit_card.jpg" alt="Background_Benefit" />
-                       {/* <img className="card__background" src={benefit.backgroundImageUrl} alt="Background_Benefit" /> */}
                        <div>
                            <div >
                                <h3>{benefit.title}</h3>

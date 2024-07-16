@@ -1,20 +1,21 @@
 
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 import {
-    EuiButtonIcon,
     EuiButton,
-    EuiPage,
-    EuiPageBody,
-    EuiText,
+    EuiButtonIcon,
     EuiFlexGroup,
     EuiFlexItem,
+    EuiPage,
+    EuiPageBody,
     EuiPanel,
     EuiSpacer,
+    EuiText,
     EuiTitle,
 } from '@elastic/eui';
+import { FunctionComponent, useEffect, useRef, useState } from 'react';
 import styles from '../styles/PricingMobile.module.css';
 
 import EnquiryModal from './EnquiryModal';
+
 
 export const technologies = {
     'Development Technologies': {
@@ -47,6 +48,37 @@ export const technologies = {
         Testing: ['JMeter', 'JUnit', 'Mercury', 'Selenium', 'Regression Testing'],
         'Project Management': ['MS Project', 'SmartSheet'],
     },
+};
+
+export interface CuratedTechnologyData {
+    [mainCategory: string]: {
+        [subCategory: string]: number;
+    };
+}
+
+
+const processSelectedTechnologies = (selectedTechnologies: { [key: string]: number }) => {
+    const result: CuratedTechnologyData = {};
+
+    Object.entries(selectedTechnologies).forEach(([tech, quantity]) => {
+        if (quantity > 0) {
+            Object.entries(technologies).forEach(([mainCategory, subCategories]) => {
+                Object.entries(subCategories).forEach(([subCategory, techList]) => {
+                    if (techList.includes(tech)) {
+                        if (!result[mainCategory]) {
+                            result[mainCategory] = {};
+                        }
+                        if (!result[mainCategory][subCategory]) {
+                            result[mainCategory][subCategory] = 0;
+                        }
+                        result[mainCategory][subCategory] += quantity;
+                    }
+                });
+            });
+        }
+    });
+
+    return result;
 };
 
 
@@ -103,10 +135,11 @@ const PricingPage: FunctionComponent = () => {
 
     useEffect(() => {
         if (slidingPanelRef.current) {
-            console.log("sliding ref", slidingPanelRef)
             setPaddingTop(slidingPanelRef.current.clientHeight);
         }
     }, [hasSelectedTechnologies]);
+
+    const processedData = processSelectedTechnologies(selectedTechnologies)
 
     return (
         <EuiPage style={{ background: 'transparent' }}>
@@ -115,7 +148,7 @@ const PricingPage: FunctionComponent = () => {
                     <h2>Craft your own<span style={{ color: 'orange' }}> pricing</span></h2>
                 </div>
                 <div className={styles.pricing_web_view}>
-                    {isClient && <EnquiryModal closeModal={triggerEnquiryModal} isOpen={isModalOpen} selectedTechnologies={selectedTechnologies} />}
+                    {isClient && <EnquiryModal closeModal={triggerEnquiryModal} isOpen={isModalOpen} selectedTechnologies={processedData} selectedRawTechData={selectedTechnologies} />}
                     <div style={{ alignItems: 'center' }}>
                         {Object.entries(technologies).map(([mainCategory, subCategories]) => (
                             <>
@@ -157,15 +190,14 @@ const PricingPage: FunctionComponent = () => {
                 </div>
 
                 <div className={styles.pricing_mobile_view}>
-                    {isModalOpen && <EnquiryModal closeModal={triggerEnquiryModal} isOpen={isModalOpen} selectedTechnologies={selectedTechnologies} />}
+                    {isModalOpen && <EnquiryModal closeModal={triggerEnquiryModal} isOpen={isModalOpen} selectedTechnologies={processedData} selectedRawTechData={selectedTechnologies} />}
                     <div className={styles.pricingContainer}>
-                        {Object.entries(technologies).map(([mainCategory, subCategories]) => (
-                            <div key={mainCategory} className={styles.mainCategory}>
+                        {Object.entries(technologies).map(([mainCategory, subCategories], idx) => (
+                            <div key={idx} className={styles.mainCategory}>
                                 <div
                                     className={`${styles.categoryHeader} ${openCategory === mainCategory ? styles.active : ''}`}
                                     onClick={() => toggleCategory(mainCategory)}
                                 >
-
                                     <h3>{mainCategory}</h3>
                                     <EuiButtonIcon
                                         aria-label={`toggle-${mainCategory}`}
@@ -179,8 +211,8 @@ const PricingPage: FunctionComponent = () => {
 
 
 
-                                        {Object.entries(subCategories).map(([category, techList]) => (
-                                            <div key={category} className={styles.subCategoryWrapper}>
+                                        {Object.entries(subCategories).map(([category, techList], idx) => (
+                                            <div key={idx} className={styles.subCategoryWrapper}>
                                                 <div
                                                     className={`${styles.subCategoryHeader} ${openSubCategory === category ? styles.active : ''
                                                         }`}
@@ -241,7 +273,7 @@ const PricingPage: FunctionComponent = () => {
                             <EuiText><h4>You have selected these items:</h4></EuiText>
                             <EuiButtonIcon aria-label='selectedTechs' iconType="cross" onClick={() => setSelectedTechnologies({})} />
                         </div>
-                        <div style={{ display: 'flex', flexGrow: 'inherit', flexWrap: 'wrap', maxHeight: '200px', overflow: 'scroll' }}>
+                        <div style={{ display: 'flex', flexGrow: 'inherit', flexWrap: 'wrap', maxHeight: '200px', overflow: 'auto' }}>
                             {Object.entries(selectedTechnologies).map(
                                 ([tech, quantity]) => quantity > 0 && (
                                     <div key={tech} className={styles.selectedItem}>
