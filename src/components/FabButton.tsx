@@ -1,5 +1,6 @@
 import { FunctionComponent } from 'react';
 import styles from '../styles/FabButton.module.css';
+import Image from 'next/image';
 
 const FabButton:FunctionComponent = () =>{
   const phoneNumber = +966560858596
@@ -25,13 +26,13 @@ const FabButton:FunctionComponent = () =>{
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
 
-  return    <a
+  return <a
     className={styles.fabButton}
     href={whatsappUrl}
     target="_blank"
     rel="noopener noreferrer"
   >
-    <img src='/whatsapp.png' alt="WhatsApp" /> 
+    <Image width={300} height={300} src='/whatsapp.png' alt="WhatsApp" /> 
   </a>
 }
 

@@ -4,8 +4,9 @@ import BenefitsSlider from "@/components/Benefits_Slider";
 import FabButton from "@/components/FabButton";
 import Footer from "@/components/Footer";
 import HeaderComponent from "@/components/Header";
+import ManagedServices from "@/components/ManagedServices";
 import PricingPage from "@/components/Pricing";
-import { EuiButton, EuiCard, EuiFlexGroup, EuiFlexItem, EuiGlobalToastList, EuiImage, EuiPage, EuiPageBody } from "@elastic/eui";
+import { EuiButton, EuiCard, EuiFlexGroup, EuiFlexItem, EuiGlobalToastList, EuiImage, EuiPage, EuiPageBody, EuiSpacer } from "@elastic/eui";
 import Head from "next/head";
 import { Fragment, FunctionComponent, useEffect, useState } from "react";
 
@@ -54,6 +55,15 @@ const Home: FunctionComponent = () => {
         <meta property="og:site_name" content="IT Staff Augmentation Services in Dammam and Riyadh | Fill Your Skill Gaps Fast" />
         <meta property="og:locale" content="en_US" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="preload" href="/benefits-webp/DSS-Website-Elements_CV View.webp" as="image" type="image/webp" />
+        <link rel="preload" href="/benefits-webp/DSS-Website-Elements_Work force.webp" as="image" type="image/webp" />
+        <link rel="preload" href="/benefits-webp/DSS-Website-Elements_precision staffing.webp" as="image" type="image/webp" />
+        <link rel="preload" href="/benefits-webp/DSS-Website-Elements_Rapid Expansion.webp" as="image" type="image/webp" />
+        <link rel="preload" href="/benefits-webp/DSS-Website-Elements_Core Focus.webp" as="image" type="image/webp" />
+        <link rel="preload" href="/benefits-webp/DSS-Website-Elements_onsite.webp" as="image" type="image/webp" />
+        <link rel="preload" href="/benefits-webp/DSS-Website-Elements_Visa.webp" as="image" type="image/webp" />
+        <link rel="preload" href="/benefits-webp/DSS-Website-Elements_Resource Deployment.webp" as="image" type="image/webp" />
+        <link rel="preload" href="/Resources_crop.jpg" as="image" type="image/jpg" />
       </Head>
       <EuiPage >
         <EuiPageBody>
@@ -113,6 +123,20 @@ const Home: FunctionComponent = () => {
             <div id="benefit_window_view">
               <Benefits />
             </div>
+
+            {/* <div className="image-container"> */}
+            {/* <EuiTitle><h2 style={{color:'black', textAlign:'center', fontSize:'3px',paddingTop: '10px'}}>Managed <span style={{color:'orange'}}>Services</span></h2></EuiTitle>
+        <p >IT Staff Augmentation Services in Dammam and Riyadh provided by Datasack Solutions are advantageous as they offer the following benefits.</p> */}
+          <EuiSpacer size="l"/>
+          <div id="benefit_mobile_view">
+         <div className="benefit-left-section benefit-left-section-mobile">
+         <h2 style={{ fontSize: '30px', paddingTop: '10px' }}>Managed <span style={{ color: 'orange' }}>Services </span></h2>
+         <p style={{ fontSize: '18px' }}>IT Staff Augmentation Services in Dammam and Riyadh provided by Datasack Solutions are advantageous as they offer the following benefits.</p>
+          </div>
+          </div>
+            <ManagedServices />
+
+
 
             <div id="window-pricing">
               <PricingPage />

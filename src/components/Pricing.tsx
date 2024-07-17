@@ -142,7 +142,7 @@ const PricingPage: FunctionComponent = () => {
     const processedData = processSelectedTechnologies(selectedTechnologies)
 
     return (
-        <EuiPage style={{ background: 'transparent' }}>
+        <EuiPage style={{background:'transparent'}}>
             <EuiPageBody>
                 <div className="benefit-left-section" style={{ paddingTop: '50px', marginBottom: '-50px' }}>
                     <h2>Craft your own<span style={{ color: 'orange' }}> pricing</span></h2>

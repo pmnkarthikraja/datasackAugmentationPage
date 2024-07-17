@@ -96,7 +96,7 @@ const BookingForm: FunctionComponent<BookingFormProps> = ({
         setSuccess(true)
       }
       else {
-        setIsLoading(true)        
+        setIsLoading(true)
         await emailJs.send(serviceId, templateIdWithGreet, formData, {
           publicKey
         })
@@ -106,7 +106,7 @@ const BookingForm: FunctionComponent<BookingFormProps> = ({
     } catch (e: any) {
       setIsLoading(false)
       if (e instanceof EmailJSResponseStatus)
-      setSuccess(false)
+        setSuccess(false)
       setIsFailed(true)
       console.log("error on sending mail", e.text, e.status)
     }
@@ -251,14 +251,14 @@ const BookingForm: FunctionComponent<BookingFormProps> = ({
               </div>
 
               <div className={`${styles.formGroup} ${styles.formgroup_protect}`}>
-              <div >
-              <input
-                  type="checkbox"
-                  id="nda"
-                  {...register('nda')}
-                />
-                <label htmlFor="nda">I want to protect my data by signing an NDA.</label>
-                <span style={{marginBottom:'5px'}} title="A Non-Disclosure Agreement (NDA) is a confidentiality agreement.">&#x1F6C8;</span>
+                <div >
+                  <input
+                    type="checkbox"
+                    id="nda"
+                    {...register('nda')}
+                  />
+                  <label htmlFor="nda">I want to protect my data by signing an NDA.</label>
+                  <span style={{ marginBottom: '5px' }} title="A Non-Disclosure Agreement (NDA) is a confidentiality agreement.">&#x1F6C8;</span>
                 </div>
               </div>
 
@@ -287,7 +287,7 @@ const BookingForm: FunctionComponent<BookingFormProps> = ({
 
                     {expandedCategories.includes(mainCategory) && (
                       <div className={''}>
-                        {Object.entries(subCategories).map(([subCategory, count],index) => (
+                        {Object.entries(subCategories).map(([subCategory, count], index) => (
                           <div key={index} className={styles.subCategory}>
                             <EuiText size='xs'>{subCategory}: {count}</EuiText>
                           </div>
@@ -302,7 +302,7 @@ const BookingForm: FunctionComponent<BookingFormProps> = ({
               <EuiHorizontalRule size='half' />
               <h3 className='contact-us'>Contact us</h3>
               <p>+966-34221121</p>
-              <p className='email-link' >support@datasackSolution.in</p>
+              <p className='email-link' >sales@datasack.in</p>
               <div style={{ height: '20px' }}></div>
               <h4>Customers who trust us</h4>
               <EuiImage src='/al_rajhi_bank.png' alt='samsung_logo' style={{ width: '100px', height: 'auto', padding: '10px', cursor: 'pointer' }} />

@@ -80,7 +80,7 @@ const Footer = () => {
                     <EuiText>
                         <strong>Contact Us:</strong>
                         <br />
-                        <EuiLink href="mailto:info@company.com" className={styles.footer_link}>info@company.com</EuiLink>
+                        <EuiLink href="mailto:support@datasack.in" className={styles.footer_link}>support@datasack.in</EuiLink>
                         <br />
                         <EuiLink href="tel:+966560858596" className={styles.footer_link}>+966-560858596</EuiLink>
                     </EuiText>

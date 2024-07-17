@@ -1,90 +1,120 @@
-"use client";
 import {
-  EuiButton,
-    EuiFlexGroup,
-    EuiFlexItem,
-    EuiHeader,
-    EuiHeaderLink,
-    EuiImage,
-    useEuiMaxBreakpoint,
-    useEuiMinBreakpoint
+  EuiFlexGroup,
+  EuiFlexItem,
+  EuiHeader,
+  EuiImage,
+  EuiButtonIcon,
+  EuiFlyout,
+  EuiFlyoutBody,
+  EuiFlyoutHeader,
+  EuiTitle,
+  EuiText,
+  useEuiMaxBreakpoint,
 } from '@elastic/eui';
 import styled from '@emotion/styled';
 import { Fragment, FunctionComponent, useState } from 'react';
 import EnquiryModal from './EnquiryModal';
 
 const HeaderComponent: FunctionComponent = () => {
-    const [isModalOpen,setIsModalOpen]=useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isFlyoutVisible, setIsFlyoutVisible] = useState(false);
 
-    const HeaderContainer = styled.div`
+  const HeaderContainer = styled.div`
     display: flex;
-    justify-content: space-around;
-    color:black;
-    text-align:center;
-    align-items:center;
+    justify-content: space-between; /* Space between logo and links */
+    align-items: center;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: transparent;
+    padding: 10px;
   `;
 
-    const HeaderLink = styled(EuiHeaderLink)`
+  const HeaderLink = styled.a`
     color: white;
-    font-weight: bolder;
+    font-weight: light;
     text-transform: uppercase;
-    margin: 0 10px;
-    border:none;
-    transition: color 0.3s ease;
-    padding-right:10px;
-    background:rgba(0, 0, 0, 0.505);
-    padding-left:10px;
-    text-decoration:none;
-    font-size:18px;
+    transition: background-color 0.3s ease;
+    padding: 10px;
+    font-size: 14px;
+    cursor:pointer;
 
-  &:hover {
-    background-color:rgba(143, 133, 200, 0.885);
-  }
-
-     ${useEuiMaxBreakpoint('m')} {
-      &{
-        font-size:10px;
-      }
-    }
-
-    ${useEuiMinBreakpoint('m')} {
-     &{
-        font-size:18px;
-     }
+    &:hover {
+      background-color: rgba(143, 133, 200, 0.885);
     }
   `;
-  
-    return (
-     <Fragment>
-            <EuiHeader style={{ background: 'transparent',border:'none',height:'60px' }}  position="fixed" >
-                <HeaderContainer>
-                    <EuiFlexItem grow={false} className="logo-item">
-                      <EuiImage className='logo-item' src='/logo.png' alt='logo' style={{width:'150px'}} />
-                    </EuiFlexItem>
-                    <EuiFlexItem className="nav-items">
-                        <EuiFlexGroup responsive={false} wrap={false} justifyContent="flexEnd">
-                        
-                            <EuiFlexItem  grow={false}>
-                                <HeaderLink  onClick={() => {
-                                    document.getElementById('window-pricing')?.scrollIntoView({ behavior: 'smooth' })
-                                }} >Get Pricing</HeaderLink>
-                            </EuiFlexItem>
-                            <EuiFlexItem grow={false}>
-                                <HeaderLink onClick={() => {
-                                    setIsModalOpen(true)
-                                }}>Call Us</HeaderLink>
-                            </EuiFlexItem>
-                        </EuiFlexGroup>
-                    </EuiFlexItem>
 
-                </HeaderContainer>
-            </EuiHeader>
+  const menuIcon = (
+    <EuiButtonIcon
+      iconType="menu"
+      onClick={() => setIsFlyoutVisible(!isFlyoutVisible)}
+      aria-label="Toggle menu"
+      style={{ background: 'transparent', marginRight: '10px',color:'white' }}
+    />
+  );
 
-            <EnquiryModal isOpen={isModalOpen} closeModal={(isClosed)=>{setIsModalOpen(!isClosed)}}/>
-       </Fragment>
-    );
+  return (
+    <Fragment>
+      <EuiHeader style={{ background: ' rgba(0, 0, 0, 0.705)', border: 'none', height: '60px' }} position="fixed">
+        <HeaderContainer>
+          <EuiFlexItem grow={false} className="logo-item">
+            <EuiImage className='logo-item' src='/logo.png' alt='logo' style={{ width: '150px' }} />
+          </EuiFlexItem>
+          <EuiFlexItem grow={false} className="nav-items">
+            <EuiFlexGroup id='menu-icon' >
+            <EuiFlexItem grow={false}>
+                {menuIcon}
+               {isFlyoutVisible&& <EuiFlyout
+                  onClose={() => setIsFlyoutVisible(false)}
+                  aria-labelledby="flyoutTitle"
+                  size="xs"
+                  id="menu-flyout"
+                  hideCloseButton
+                  style={{background:'black'}}
+                >
+                  <EuiFlyoutHeader >
+                  </EuiFlyoutHeader>
+                  <EuiFlyoutBody>
+                    <EuiText>
+                      <p><HeaderLink onClick={() => {
+                        document.getElementById('window-pricing')?.scrollIntoView({ behavior: 'smooth' })
+                      }}>Get Pricing</HeaderLink></p>
+                      <p><HeaderLink onClick={() => {
+                        document.getElementById('managed-service-section')?.scrollIntoView({ behavior: 'smooth' })
+                      }}>Managed Services</HeaderLink></p>
+                      <p><HeaderLink onClick={() => {
+                        setIsModalOpen(true)
+                        setIsFlyoutVisible(false)
+                      }}>Call Us</HeaderLink></p>
+                    </EuiText>
+                  </EuiFlyoutBody>
+                </EuiFlyout>}
+              </EuiFlexItem>
+            </EuiFlexGroup>
+
+            <EuiFlexGroup responsive={false} wrap={true} justifyContent="flexEnd" id='menu-items'>
+              <EuiFlexItem  grow={false}>
+                <HeaderLink onClick={() => {
+                  document.getElementById('window-pricing')?.scrollIntoView({ behavior: 'smooth' })
+                }}>Get <span style={{color:'orange',fontWeight:'bold'}}>Pricing</span></HeaderLink>
+              </EuiFlexItem>
+              <EuiFlexItem grow={false}>
+                <HeaderLink onClick={() => {
+                  document.getElementById('managed-service-section')?.scrollIntoView({ behavior: 'smooth' })
+                }}>Managed Services</HeaderLink>
+              </EuiFlexItem>
+              <EuiFlexItem grow={false}>
+                <HeaderLink onClick={() => {
+                  setIsModalOpen(true)
+                }}>Call Us</HeaderLink>
+              </EuiFlexItem>
+            
+            </EuiFlexGroup>
+          </EuiFlexItem>
+        </HeaderContainer>
+      </EuiHeader>
+
+      <EnquiryModal isOpen={isModalOpen} closeModal={(isClosed) => { setIsModalOpen(!isClosed) }} />
+    </Fragment>
+  );
 };
 
 export default HeaderComponent;
