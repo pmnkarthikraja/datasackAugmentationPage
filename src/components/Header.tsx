@@ -1,5 +1,6 @@
 "use client";
 import {
+  EuiButton,
     EuiFlexGroup,
     EuiFlexItem,
     EuiHeader,

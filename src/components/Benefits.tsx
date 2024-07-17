@@ -58,12 +58,12 @@ const Benefits: FunctionComponent = () => {
             <EuiFlexGroup alignItems="center" justifyContent="center" responsive={true} wrap>
                 {benefitsSection1.map((benefit, idx) => (
                     <EuiFlexItem key={idx} className="custom-flex-item">
-                        <article key={idx} className="card">
+                        <article className="card">
                             <img className="card__background" src={benefit.backgroundImageUrl} alt="Background_Benefit" />
-                            <div key={idx}>
-                                <div key={idx} className="card__content--container | flow" >
-                                    <h2 key={idx} className="card__title">{benefit.title}</h2>
-                                    <p key={idx} className="card__description">
+                            <div >
+                                <div className="card__content--container | flow" >
+                                    <h2 className="card__title">{benefit.title}</h2>
+                                    <p className="card__description">
                                         {benefit.description}
                                     </p>
                                 </div>
@@ -78,12 +78,12 @@ const Benefits: FunctionComponent = () => {
             <EuiFlexGroup alignItems="center" justifyContent="center" responsive={true} wrap>
                 {benefitsSection2.map((benefit, idx) => (
                     <EuiFlexItem key={idx} className="custom-flex-item">
-                        <article key={idx} className="card" >
+                        <article  className="card" >
                             <img className="card__background" src={benefit.backgroundImageUrl} alt="Background_Benefit" />
-                            <div key={idx}>
-                                <div key={idx} className="card__content--container | flow" >
-                                    <h2 key={idx} className="card__title">{benefit.title}</h2>
-                                    <p key={idx} className="card__description">
+                            <div >
+                                <div  className="card__content--container | flow" >
+                                    <h2  className="card__title">{benefit.title}</h2>
+                                    <p  className="card__description">
                                         {benefit.description}
                                     </p>
                                 </div>

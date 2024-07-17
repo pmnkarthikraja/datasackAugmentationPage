@@ -11,7 +11,7 @@ import {
     EuiText,
     EuiTitle,
 } from '@elastic/eui';
-import { FunctionComponent, useEffect, useRef, useState } from 'react';
+import { Fragment, FunctionComponent, useEffect, useRef, useState } from 'react';
 import styles from '../styles/PricingMobile.module.css';
 
 import EnquiryModal from './EnquiryModal';
@@ -150,8 +150,8 @@ const PricingPage: FunctionComponent = () => {
                 <div className={styles.pricing_web_view}>
                     {isClient && <EnquiryModal closeModal={triggerEnquiryModal} isOpen={isModalOpen} selectedTechnologies={processedData} selectedRawTechData={selectedTechnologies} />}
                     <div style={{ alignItems: 'center' }}>
-                        {Object.entries(technologies).map(([mainCategory, subCategories]) => (
-                            <>
+                        {Object.entries(technologies).map(([mainCategory, subCategories],index) => (
+                            <Fragment key={index}>
                                 <EuiTitle size="l"><h1>{mainCategory}</h1></EuiTitle>
                                 <EuiSpacer size="l" />
                                 <EuiFlexGroup responsive wrap key={mainCategory}>
@@ -163,14 +163,14 @@ const PricingPage: FunctionComponent = () => {
                                             <EuiFlexItem>
                                                 <EuiPanel style={{ minHeight: '300px', backgroundColor: '#E8E6E0' }}>
                                                     {techList.map((tech, idx) => (
-                                                        <EuiFlexGroup wrap={false} responsive={false} key={tech} alignItems="center" className={styles.tech_item} >
+                                                        <EuiFlexGroup  wrap={false} responsive={false} key={idx} alignItems="center" className={styles.tech_item} >
                                                             <EuiFlexItem>
                                                                 <EuiText color='black' style={{
                                                                     fontWeight: 'bold'
                                                                 }}>{tech}</EuiText>
                                                             </EuiFlexItem>
                                                             <EuiFlexItem>
-                                                                <div key={idx} style={{ display: 'flex', alignItems: 'center', padding: '5px' }}>
+                                                                <div style={{ display: 'flex', alignItems: 'center', padding: '5px' }}>
                                                                     <EuiButtonIcon aria-label='decreament' iconType={'minus'} size='s' onClick={() => decrementQuantity(tech)} />
                                                                     <EuiText className="quantity-display">{selectedTechnologies[tech] || 0}</EuiText>
                                                                     <EuiButtonIcon aria-label='increament' iconType={'plus'} onClick={() => incrementQuantity(tech)} />
@@ -184,7 +184,7 @@ const PricingPage: FunctionComponent = () => {
                                         </EuiFlexGroup>
                                     ))}
                                 </EuiFlexGroup>
-                            </>
+                            </Fragment>
                         ))}
                     </div>
                 </div>
@@ -229,8 +229,8 @@ const PricingPage: FunctionComponent = () => {
                                                 </div>
                                                 {openSubCategory === category && (
                                                     <div className={styles.techList}>
-                                                        {techList.map((tech) => (
-                                                            <div key={tech} className={styles.techItem}>
+                                                        {techList.map((tech,techIdx) => (
+                                                            <div key={techIdx} className={styles.techItem}>
                                                                 <EuiText color="black" style={{ fontWeight: 'bold' }}>
                                                                     {tech}
                                                                 </EuiText>
@@ -256,18 +256,14 @@ const PricingPage: FunctionComponent = () => {
                                                 )}
                                             </div>
                                         ))}
-
-
-
                                     </div>
                                 )}
                             </div>
-
                         ))}
                     </div>
                 </div>
 
-                <div style={{ paddingTop: `${paddingTop * 1.25}px` }}>
+                <div  style={{ paddingTop: `${paddingTop * 1.25}px` }}>
                     <div ref={slidingPanelRef} className={`${styles.slidingPanel} ${hasSelectedTechnologies ? styles.show : ''}`}>
                         <div className={styles.slidingPanelHeader}>
                             <EuiText><h4>You have selected these items:</h4></EuiText>
@@ -275,8 +271,8 @@ const PricingPage: FunctionComponent = () => {
                         </div>
                         <div style={{ display: 'flex', flexGrow: 'inherit', flexWrap: 'wrap', maxHeight: '200px', overflow: 'auto' }}>
                             {Object.entries(selectedTechnologies).map(
-                                ([tech, quantity]) => quantity > 0 && (
-                                    <div key={tech} className={styles.selectedItem}>
+                                ([tech, quantity],idx) => quantity > 0 && (
+                                    <div key={idx} className={styles.selectedItem}>
                                         <p style={{ padding: '10px' }}>{tech}: {quantity}</p>
                                         <EuiButtonIcon aria-label='removeTech' iconType="cross" onClick={() => removeTechnology(tech)} />
                                     </div>

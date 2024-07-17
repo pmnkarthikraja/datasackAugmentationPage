@@ -84,19 +84,19 @@ const Home: FunctionComponent = () => {
               <EuiCard hasBorder={false} title="Augment your software team with IT professionals via IT Team Augmentation Services in Dammam and Riyadh." />
             </div>
 
-            <div id="window_view_analytics">
-              <EuiFlexGroup gutterSize="l">
-                {analyticsIcons.map((item, idx) => (<>
+          
+          <div id="window_view_analytics">
+              <EuiFlexGroup gutterSize="l"  key={12}>
+                {analyticsIcons.map((item, idx) => (
                   <EuiFlexItem key={idx}>
                     <EuiCard
                       style={{ padding: '50px' }}
                       title={<span key={idx} style={{ fontSize: '2.3vw' }}>{item.title}</span>}
                       description={<span key={idx} style={{ fontSize: '1.2vw' }}>{item.description}</span>}
                     />
-                  </EuiFlexItem>
-                </>))}
+                  </EuiFlexItem>))}
               </EuiFlexGroup>
-            </div>
+              </div>
 
             <div id="mobile_view_analytics">
               <AnalyticsSlider />

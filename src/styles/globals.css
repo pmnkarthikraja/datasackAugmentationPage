@@ -382,9 +382,6 @@
     max-width: fit-content;
   }
 
-
-
-
   .benefit-slider {
     width: 100%;
     height: auto;
@@ -394,7 +391,6 @@
   .benefit-card-wrapper {
     display: flex;
     margin: auto;
-    justify-content: end;
     align-items: right;
     height: 100%;
   }

@@ -287,8 +287,8 @@ const BookingForm: FunctionComponent<BookingFormProps> = ({
 
                     {expandedCategories.includes(mainCategory) && (
                       <div className={''}>
-                        {Object.entries(subCategories).map(([subCategory, count]) => (
-                          <div key={subCategory} className={styles.subCategory}>
+                        {Object.entries(subCategories).map(([subCategory, count],index) => (
+                          <div key={index} className={styles.subCategory}>
                             <EuiText size='xs'>{subCategory}: {count}</EuiText>
                           </div>
                         ))}
