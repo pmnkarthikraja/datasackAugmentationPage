@@ -29,7 +29,7 @@ const HeaderComponent: FunctionComponent = () => {
     padding: 10px;
   `;
 
-  const HeaderLink = styled.a`
+  const HeaderLink = styled.div`
     color: white;
     font-weight: light;
     text-transform: uppercase;
