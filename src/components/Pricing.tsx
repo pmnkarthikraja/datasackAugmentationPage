@@ -182,7 +182,7 @@ const PricingPage: FunctionComponent = () => {
                                                             {techList.map((tech, idx) => (
                                                                 <EuiFlexGroup wrap={false} responsive={false} key={idx} alignItems="center" className={styles.tech_item}>
                                                                     <EuiFlexItem>
-                                                                        <EuiText color='black' style={{ fontWeight: 'bold' }}>{tech}</EuiText>
+                                                                        <EuiText color='black' style={{ fontWeight: 'bold',width:'80px' }}>{tech}</EuiText>
                                                                     </EuiFlexItem>
                                                                     <EuiFlexItem>
                                                                         <div style={{ display: 'flex', alignItems: 'center', padding: '5px' }}>
@@ -224,11 +224,11 @@ const PricingPage: FunctionComponent = () => {
                                                     <EuiTitle size="s"><h2 style={{margin:'0 auto', color:'#909090'}}>{category}</h2></EuiTitle>
                                                 </EuiFlexItem>
                                                 <EuiFlexItem>
-                                                    <EuiPanel id={styles.pricingPanel} className="nft">
+                                                    <EuiPanel id={styles.pricingPanel}>
                                                         {techList.map((tech, idx) => (
                                                             <EuiFlexGroup wrap={false} responsive={false} key={idx} alignItems="center" className={styles.tech_item}>
                                                                 <EuiFlexItem>
-                                                                    <EuiText color='black' style={{ fontWeight: 'bold' }}>{tech}</EuiText>
+                                                                    <EuiText color='black' style={{ fontWeight: 'bold',width:'80px' }}>{tech}</EuiText>
                                                                 </EuiFlexItem>
                                                                 <EuiFlexItem>
                                                                     <div style={{ display: 'flex', alignItems: 'center', padding: '5px' }}>
