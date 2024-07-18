@@ -1,4 +1,3 @@
-
 import {
     EuiButton,
     EuiButtonIcon,
@@ -13,11 +12,16 @@ import {
 } from '@elastic/eui';
 import { Fragment, FunctionComponent, useEffect, useRef, useState } from 'react';
 import styles from '../styles/PricingMobile.module.css';
-
 import EnquiryModal from './EnquiryModal';
 
+type Technologies = {
+    [mainCategory: string]: {
+        [subCategory: string]: string[];
+    };
+};
 
-export const technologies = {
+
+export const technologies: Technologies = {
     'Development Technologies': {
         Web: ['HTML5', 'CSS3', 'JavaScript', 'AngularJS'],
         Mobile: ['Android', 'iOS', 'Xamarin'],
@@ -141,8 +145,19 @@ const PricingPage: FunctionComponent = () => {
 
     const processedData = processSelectedTechnologies(selectedTechnologies)
 
+    const groupedCategories = [
+        {
+            mainCategories: ['Data Management and Analytics', 'Architecture and Design'],
+            subCategories: ['Database', 'Analytics', 'Architecture', 'UIDesigning']
+        },
+        {
+            mainCategories: ['Business Solutions', 'Quality Assurance and Project Management'],
+            subCategories: ['eCommerce', 'Enterprise Social', 'Testing', 'Project Management']
+        }
+    ];
+
     return (
-        <EuiPage style={{background:'transparent'}}>
+        <EuiPage style={{ background: 'transparent' }}>
             <EuiPageBody>
                 <div className="benefit-left-section" style={{ paddingTop: '50px', marginBottom: '-50px' }}>
                     <h2>Craft your own<span style={{ color: 'orange' }}> pricing</span></h2>
@@ -150,44 +165,92 @@ const PricingPage: FunctionComponent = () => {
                 <div className={styles.pricing_web_view}>
                     {isClient && <EnquiryModal closeModal={triggerEnquiryModal} isOpen={isModalOpen} selectedTechnologies={processedData} selectedRawTechData={selectedTechnologies} />}
                     <div style={{ alignItems: 'center' }}>
-                        {Object.entries(technologies).map(([mainCategory, subCategories],index) => (
+                        {Object.entries(technologies).map(([mainCategory, subCategories], index) => (
                             <Fragment key={index}>
-                                <EuiTitle size="l"><h1>{mainCategory}</h1></EuiTitle>
-                                <EuiSpacer size="l" />
-                                <EuiFlexGroup responsive wrap key={mainCategory}>
-                                    {Object.entries(subCategories).map(([category, techList]) => (
-                                        <EuiFlexGroup responsive key={category} direction="column" gutterSize="m" className={styles.category_group}>
-                                            <EuiFlexItem>
-                                                <EuiTitle size="m"><h2>{category}</h2></EuiTitle>
-                                            </EuiFlexItem>
-                                            <EuiFlexItem>
-                                                <EuiPanel style={{ minHeight: '300px', backgroundColor: '#E8E6E0' }}>
-                                                    {techList.map((tech, idx) => (
-                                                        <EuiFlexGroup  wrap={false} responsive={false} key={idx} alignItems="center" className={styles.tech_item} >
-                                                            <EuiFlexItem>
-                                                                <EuiText color='black' style={{
-                                                                    fontWeight: 'bold'
-                                                                }}>{tech}</EuiText>
-                                                            </EuiFlexItem>
-                                                            <EuiFlexItem>
-                                                                <div style={{ display: 'flex', alignItems: 'center', padding: '5px' }}>
-                                                                    <EuiButtonIcon aria-label='decreament' iconType={'minus'} size='s' onClick={() => decrementQuantity(tech)} />
-                                                                    <EuiText className="quantity-display">{selectedTechnologies[tech] || 0}</EuiText>
-                                                                    <EuiButtonIcon aria-label='increament' iconType={'plus'} onClick={() => incrementQuantity(tech)} />
-                                                                </div>
-                                                            </EuiFlexItem>
-                                                        </EuiFlexGroup>
-                                                    ))}
-                                                </EuiPanel>
-                                            </EuiFlexItem>
-                                            <EuiSpacer size="m" />
+                                {!groupedCategories.some(group => group.mainCategories.includes(mainCategory)) && (
+                                    <Fragment >
+                                        <EuiTitle size="m" ><h2  style={{color:'#B06607'}}>{mainCategory}</h2></EuiTitle>
+                                        <EuiSpacer size="l" />
+                                        <EuiFlexGroup responsive wrap key={mainCategory}>
+                                            {Object.entries(subCategories).map(([category, techList]) => (
+                                                <EuiFlexGroup responsive key={category} direction="column" gutterSize="m" className={styles.category_group}>
+                                                    <EuiFlexItem>
+                                                        <EuiTitle size="s" ><h2  style={{margin:'0 auto', color:'#909090'}}>{category}</h2></EuiTitle>
+                                                    </EuiFlexItem>
+                                                    <EuiFlexItem>
+                                                        <EuiPanel id={styles.pricingPanel} className="nft">
+                                                            {techList.map((tech, idx) => (
+                                                                <EuiFlexGroup wrap={false} responsive={false} key={idx} alignItems="center" className={styles.tech_item}>
+                                                                    <EuiFlexItem>
+                                                                        <EuiText color='black' style={{ fontWeight: 'bold' }}>{tech}</EuiText>
+                                                                    </EuiFlexItem>
+                                                                    <EuiFlexItem>
+                                                                        <div style={{ display: 'flex', alignItems: 'center', padding: '5px' }}>
+                                                                            <EuiButtonIcon aria-label='decrement' iconType={'minus'} size='s' onClick={() => decrementQuantity(tech)} />
+                                                                            <EuiText className="quantity-display">{selectedTechnologies[tech] || 0}</EuiText>
+                                                                            <EuiButtonIcon aria-label='increment' iconType={'plus'} onClick={() => incrementQuantity(tech)} />
+                                                                        </div>
+                                                                    </EuiFlexItem>
+                                                                </EuiFlexGroup>
+                                                            ))}
+                                                        </EuiPanel>
+                                                    </EuiFlexItem>
+                                                    <EuiSpacer size="m" />
+                                                </EuiFlexGroup>
+                                            ))}
                                         </EuiFlexGroup>
+                                    </Fragment>
+                                )}
+                            </Fragment>
+                        ))}
+                        {groupedCategories.map((group, groupIndex) => (
+                            <Fragment key={groupIndex}>
+                                <EuiFlexGroup responsive wrap>
+                                    {group.mainCategories.map((mainCategory, mainIndex) => (
+                                        <EuiFlexItem key={mainIndex}>
+                                            <EuiTitle size="m"><h2  style={{color:'#B06607'}}>{mainCategory}</h2></EuiTitle>
+                                        </EuiFlexItem>
                                     ))}
+                                </EuiFlexGroup>
+                                <EuiSpacer size="l" />
+                                <EuiFlexGroup responsive wrap>
+                                    {group.subCategories.map((category, catIndex) => {
+                                        const [mainCategory] = Object.entries(technologies).find(([key, value]) => Object.keys(value).includes(category)) || [];
+                                        const techList = mainCategory ? technologies[mainCategory][category] : [];
+
+                                        return (
+                                            <EuiFlexGroup responsive key={catIndex} direction="column" gutterSize="m" className={styles.category_group}>
+                                                <EuiFlexItem>
+                                                    <EuiTitle size="s"><h2 style={{margin:'0 auto', color:'#909090'}}>{category}</h2></EuiTitle>
+                                                </EuiFlexItem>
+                                                <EuiFlexItem>
+                                                    <EuiPanel id={styles.pricingPanel} className="nft">
+                                                        {techList.map((tech, idx) => (
+                                                            <EuiFlexGroup wrap={false} responsive={false} key={idx} alignItems="center" className={styles.tech_item}>
+                                                                <EuiFlexItem>
+                                                                    <EuiText color='black' style={{ fontWeight: 'bold' }}>{tech}</EuiText>
+                                                                </EuiFlexItem>
+                                                                <EuiFlexItem>
+                                                                    <div style={{ display: 'flex', alignItems: 'center', padding: '5px' }}>
+                                                                        <EuiButtonIcon aria-label='decrement' iconType={'minus'} size='s' onClick={() => decrementQuantity(tech)} />
+                                                                        <EuiText className="quantity-display">{selectedTechnologies[tech] || 0}</EuiText>
+                                                                        <EuiButtonIcon aria-label='increment' iconType={'plus'} onClick={() => incrementQuantity(tech)} />
+                                                                    </div>
+                                                                </EuiFlexItem>
+                                                            </EuiFlexGroup>
+                                                        ))}
+                                                    </EuiPanel>
+                                                </EuiFlexItem>
+                                                <EuiSpacer size="m" />
+                                            </EuiFlexGroup>
+                                        );
+                                    })}
                                 </EuiFlexGroup>
                             </Fragment>
                         ))}
                     </div>
                 </div>
+
 
                 <div className={styles.pricing_mobile_view}>
                     {isModalOpen && <EnquiryModal closeModal={triggerEnquiryModal} isOpen={isModalOpen} selectedTechnologies={processedData} selectedRawTechData={selectedTechnologies} />}
@@ -229,7 +292,7 @@ const PricingPage: FunctionComponent = () => {
                                                 </div>
                                                 {openSubCategory === category && (
                                                     <div className={styles.techList}>
-                                                        {techList.map((tech,techIdx) => (
+                                                        {techList.map((tech, techIdx) => (
                                                             <div key={techIdx} className={styles.techItem}>
                                                                 <EuiText color="black" style={{ fontWeight: 'bold' }}>
                                                                     {tech}
@@ -263,7 +326,7 @@ const PricingPage: FunctionComponent = () => {
                     </div>
                 </div>
 
-                <div  style={{ paddingTop: `${paddingTop * 1.25}px` }}>
+                <div style={{ paddingTop: `${paddingTop * 1.25}px` }}>
                     <div ref={slidingPanelRef} className={`${styles.slidingPanel} ${hasSelectedTechnologies ? styles.show : ''}`}>
                         <div className={styles.slidingPanelHeader}>
                             <EuiText><h4>You have selected these items:</h4></EuiText>
@@ -271,7 +334,7 @@ const PricingPage: FunctionComponent = () => {
                         </div>
                         <div style={{ display: 'flex', flexGrow: 'inherit', flexWrap: 'wrap', maxHeight: '200px', overflow: 'auto' }}>
                             {Object.entries(selectedTechnologies).map(
-                                ([tech, quantity],idx) => quantity > 0 && (
+                                ([tech, quantity], idx) => quantity > 0 && (
                                     <div key={idx} className={styles.selectedItem}>
                                         <p style={{ padding: '10px' }}>{tech}: {quantity}</p>
                                         <EuiButtonIcon aria-label='removeTech' iconType="cross" onClick={() => removeTechnology(tech)} />

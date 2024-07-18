@@ -14,6 +14,7 @@ import {
 import styled from '@emotion/styled';
 import { Fragment, FunctionComponent, useState } from 'react';
 import EnquiryModal from './EnquiryModal';
+import Image from 'next/image';
 
 const HeaderComponent: FunctionComponent = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -56,7 +57,7 @@ const HeaderComponent: FunctionComponent = () => {
       <EuiHeader style={{ background: ' rgba(0, 0, 0, 0.705)', border: 'none', height: '60px' }} position="fixed">
         <HeaderContainer>
           <EuiFlexItem grow={false} className="logo-item">
-            <EuiImage className='logo-item' src='/logo.png' alt='logo' style={{ width: '150px' }} />
+            <Image width={150} height={150}  className='logo-item' src='/logo.png' alt='logo' />
           </EuiFlexItem>
           <EuiFlexItem grow={false} className="nav-items">
             <EuiFlexGroup id='menu-icon' >

@@ -1,10 +1,11 @@
 import { EuiButtonIcon, EuiFlexGroup, EuiFlexItem, EuiHorizontalRule, EuiImage, EuiPanel, EuiSkeletonCircle, EuiSkeletonLoading, EuiSkeletonRectangle, EuiSkeletonText, EuiSkeletonTitle, EuiSpacer, EuiText } from '@elastic/eui';
 import emailJs, { EmailJSResponseStatus } from '@emailjs/browser';
-import { FunctionComponent, useState } from 'react';
+import { Fragment, FunctionComponent, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import styles from '../styles/BookingForm.module.css';
 import { CuratedTechnologyData, technologies } from './Pricing';
 import SuccessModal from './SuccessModal';
+import Image from 'next/image';
 
 const flattenTechnologyData = (curatedData: any, selectedData: any) => {
   const result = [];
@@ -116,6 +117,14 @@ const BookingForm: FunctionComponent<BookingFormProps> = ({
     setSuccess(false);
     setIsFailed(false)
   };
+
+
+  const brandLogos =[
+    {brandUrl:"/al_rajhi_bank.png", alt:"al_rajhi"},
+    {brandUrl:"/alinma.png", alt:"alinma"},
+    {brandUrl:"/bank_albilad.png", alt:"bank_albilad"},
+  ]
+
 
   return (
 
@@ -273,7 +282,7 @@ const BookingForm: FunctionComponent<BookingFormProps> = ({
                 <span style={{ fontWeight: 'bold', fontSize: '25px', lineHeight: '1.5' }}>Free Consultation</span> - Level Up Your IT with DataSack Experts!
               </h3>
 
-              {selectedTechnologies && <>
+              {selectedTechnologies && <Fragment>
                 <h3>Selected Technologies:</h3>
                 {Object.entries(selectedTechnologies).map(([mainCategory, subCategories]) => (
                   <div key={mainCategory} className={styles.categoryWrapper}>
@@ -295,7 +304,7 @@ const BookingForm: FunctionComponent<BookingFormProps> = ({
                       </div>
                     )}
                   </div>
-                ))}</>}
+                ))}</Fragment>}
 
 
 
@@ -305,9 +314,10 @@ const BookingForm: FunctionComponent<BookingFormProps> = ({
               <p className='email-link' >sales@datasack.in</p>
               <div style={{ height: '20px' }}></div>
               <h4>Customers who trust us</h4>
-              <EuiImage src='/al_rajhi_bank.png' alt='samsung_logo' style={{ width: '100px', height: 'auto', padding: '10px', cursor: 'pointer' }} />
-              <EuiImage src='/alinma.png' alt='samsung_logo' style={{ width: '100px', height: 'auto', padding: '10px', cursor: 'pointer' }} />
-              <EuiImage src='/bank_albilad.png' alt='samsung_logo' style={{ width: '100px', height: 'auto', padding: '10px', cursor: 'pointer' }} />
+
+                {brandLogos.map((logo,idx)=>(
+              <Image width={100} height={80} src={logo.brandUrl} alt={logo.alt} key={idx}  style={{ width: '100px', height: 'auto', padding: '10px', cursor: 'pointer' }} />
+                ))}
             </div>
           </div>
         </div>

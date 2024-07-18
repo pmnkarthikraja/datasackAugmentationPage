@@ -8,6 +8,7 @@ import ManagedServices from "@/components/ManagedServices";
 import PricingPage from "@/components/Pricing";
 import { EuiButton, EuiCard, EuiFlexGroup, EuiFlexItem, EuiGlobalToastList, EuiImage, EuiPage, EuiPageBody, EuiSpacer } from "@elastic/eui";
 import Head from "next/head";
+import Image from "next/image";
 import { Fragment, FunctionComponent, useEffect, useState } from "react";
 
 const Home: FunctionComponent = () => {
@@ -74,7 +75,7 @@ const Home: FunctionComponent = () => {
 
           <div>
             <div className="image-container">
-              <EuiImage className="background-img" src="/Resources_crop.jpg" alt="background" />
+              <Image width={200} height={400} className="background-img" src="/background_vector3.webp" alt="background" />
               <div className="image-overlay"></div>
             </div>
             <div className="title-wrap">

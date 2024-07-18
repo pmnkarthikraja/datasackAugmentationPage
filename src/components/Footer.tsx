@@ -7,6 +7,7 @@ import {
 } from '@elastic/eui';
 import '@elastic/eui/dist/eui_theme_light.css';
 import styles from '../styles/Footer.module.css'
+import Image from 'next/image';
 
 const Footer = () => {
     return (
@@ -14,7 +15,7 @@ const Footer = () => {
             <EuiFlexGroup id='footer-section' responsive wrap alignItems="center" justifyContent="spaceBetween">
                 <EuiFlexItem grow={false} >
                     <div className={styles.footer_logo_item}>
-                        <img src="/logo.png" alt="Company Logo" className={styles.footer_logo} />
+                        <Image width={150} height={150} src="/logo.png" alt="Company Logo" className={styles.footer_logo} />
                     </div>
                 </EuiFlexItem>
 

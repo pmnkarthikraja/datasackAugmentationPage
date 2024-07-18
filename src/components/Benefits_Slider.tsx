@@ -4,6 +4,7 @@ import {
     EuiPageBody
 } from '@elastic/eui';
 import '@elastic/eui/dist/eui_theme_light.css';
+import Image from 'next/image';
 import Slider, { Settings } from 'react-slick';
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
@@ -72,7 +73,7 @@ const BenefitsSlider = () => (
                     {benefits.map((benefit, index) => (
                          <div key={index} className="benefit-card-wrapper-mobile">
                        <article className=" card-mobile benefit-card">
-                       <img className="card__background-mobile" src="/background_benefit_card.jpg" alt="Background_Benefit" />
+                       <Image width={200} height={150} className="card__background-mobile" src="/background_benefit_card.jpg" alt="Background_Benefit" />
                        <div>
                            <div >
                                <h3>{benefit.title}</h3>
