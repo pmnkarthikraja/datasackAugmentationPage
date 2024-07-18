@@ -56,15 +56,15 @@ const Home: FunctionComponent = () => {
         <meta property="og:site_name" content="IT Staff Augmentation Services in Dammam and Riyadh | Fill Your Skill Gaps Fast" />
         <meta property="og:locale" content="en_US" />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="preload" href="/benefits-webp/DSS-Website-Elements_CV View.webp" as="image" type="image/webp" />
-        <link rel="preload" href="/benefits-webp/DSS-Website-Elements_Work force.webp" as="image" type="image/webp" />
-        <link rel="preload" href="/benefits-webp/DSS-Website-Elements_precision staffing.webp" as="image" type="image/webp" />
-        <link rel="preload" href="/benefits-webp/DSS-Website-Elements_Rapid Expansion.webp" as="image" type="image/webp" />
-        <link rel="preload" href="/benefits-webp/DSS-Website-Elements_Core Focus.webp" as="image" type="image/webp" />
-        <link rel="preload" href="/benefits-webp/DSS-Website-Elements_onsite.webp" as="image" type="image/webp" />
-        <link rel="preload" href="/benefits-webp/DSS-Website-Elements_Visa.webp" as="image" type="image/webp" />
-        <link rel="preload" href="/benefits-webp/DSS-Website-Elements_Resource Deployment.webp" as="image" type="image/webp" />
-        <link rel="preload" href="/Resources_crop.jpg" as="image" type="image/jpg" />
+        <link rel="preload" href="/benefits-webp-1000x684/DSS-Website-Elements_CV View.webp" as="image" type="image/webp" />
+        <link rel="preload" href="/benefits-webp-1000x684/DSS-Website-Elements_Work force.webp" as="image" type="image/webp" />
+        <link rel="preload" href="/benefits-webp-1000x684/DSS-Website-Elements_precision staffing.webp" as="image" type="image/webp" />
+        <link rel="preload" href="/benefits-webp-1000x684/DSS-Website-Elements_Rapid Expansion.webp" as="image" type="image/webp" />
+        <link rel="preload" href="/benefits-webp-1000x684/DSS-Website-Elements_Core Focus.webp" as="image" type="image/webp" />
+        <link rel="preload" href="/benefits-webp-1000x684/DSS-Website-Elements_onsite.webp" as="image" type="image/webp" />
+        <link rel="preload" href="/benefits-webp-1000x684/DSS-Website-Elements_Visa.webp" as="image" type="image/webp" />
+        <link rel="preload" href="/benefits-webp-1000x684/DSS-Website-Elements_Resource Deployment.webp" as="image" type="image/webp" />
+        <link rel="preload" href="/background_vector.webp" as="image" type="image/webp" />
       </Head>
       <EuiPage >
         <EuiPageBody>
@@ -75,7 +75,7 @@ const Home: FunctionComponent = () => {
 
           <div>
             <div className="image-container">
-              <Image width={200} height={400} className="background-img" src="/background_vector3.webp" alt="background" />
+              <Image priority width={200} height={400} className="background-img" src="/background_vector.webp" alt="background" />
               <div className="image-overlay"></div>
             </div>
             <div className="title-wrap">
