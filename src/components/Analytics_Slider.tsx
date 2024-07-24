@@ -46,15 +46,16 @@ const cardNodes = analyticsIcons.map(function (item, index) {
 
 
 const settings: Settings = {
-  dots: false,
+  dots: true,
   arrows: true,
   infinite: true,
-  speed: 1000,
+  speed: 400,
   slidesToShow: 1,
   slidesToScroll: 1,
   autoplay: true,
-  autoplaySpeed: 2500,
+  autoplaySpeed: 4500,
   cssEase: "linear",
+  pauseOnFocus:true,
 };
 
 const AnalyticsSlider = () => (
