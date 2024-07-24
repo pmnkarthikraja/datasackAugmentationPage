@@ -7,19 +7,22 @@ import {
 import { Fragment, FunctionComponent } from 'react';
 import BookingForm from './BookingForm';
 import { CuratedTechnologyData } from './Pricing';
+import { CustomTech } from './CustomPricing';
 
 export interface EnquiryModalProps {
   isOpen: boolean
   closeModal: (isClose: boolean) => void
-  selectedTechnologies?:CuratedTechnologyData
-  selectedRawTechData?:{ [key: string]: number }
+  selectedTechnologies?: CuratedTechnologyData
+  selectedRawTechData?: { [key: string]: number }
+  customTechs: CustomTech[]
 }
 
 const EnquiryModal: FunctionComponent<EnquiryModalProps> = ({
   isOpen,
   closeModal,
   selectedTechnologies,
-  selectedRawTechData
+  selectedRawTechData,
+  customTechs
 }) => {
   const modalTitleId = useGeneratedHtmlId();
 
@@ -35,7 +38,7 @@ const EnquiryModal: FunctionComponent<EnquiryModalProps> = ({
           <EuiModalHeader>
           </EuiModalHeader>
           <EuiModalBody >
-            <BookingForm selectedTechnologies={selectedTechnologies}  selectedRawTechData={selectedRawTechData}/>
+            <BookingForm selectedTechnologies={selectedTechnologies} selectedRawTechData={selectedRawTechData} customTechs={customTechs} />
           </EuiModalBody>
         </EuiModal>
       )}

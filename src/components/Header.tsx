@@ -113,7 +113,7 @@ const HeaderComponent: FunctionComponent = () => {
         </HeaderContainer>
       </EuiHeader>
 
-      <EnquiryModal isOpen={isModalOpen} closeModal={(isClosed) => { setIsModalOpen(!isClosed) }} />
+      <EnquiryModal isOpen={isModalOpen} closeModal={(isClosed) => { setIsModalOpen(!isClosed) }} customTechs={[]} />
     </Fragment>
   );
 };

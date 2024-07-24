@@ -6,6 +6,7 @@ import styles from '../styles/BookingForm.module.css';
 import { CuratedTechnologyData, technologies } from './Pricing';
 import SuccessModal from './SuccessModal';
 import Image from 'next/image';
+import { CustomTech } from './CustomPricing';
 
 const flattenTechnologyData = (curatedData: any, selectedData: any) => {
   const result = [];
@@ -46,11 +47,13 @@ interface EnquiryForm {
 export interface BookingFormProps {
   selectedTechnologies?: CuratedTechnologyData;
   selectedRawTechData?: { [key: string]: number }
+  customTechs?: CustomTech[]
 }
 
 const BookingForm: FunctionComponent<BookingFormProps> = ({
   selectedTechnologies,
-  selectedRawTechData
+  selectedRawTechData,
+  customTechs
 }) => {
   const { register, handleSubmit, formState: { errors } } = useForm<EnquiryForm>();
   const [expandedCategories, setExpandedCategories] = useState<string[]>([]);
@@ -83,12 +86,25 @@ const BookingForm: FunctionComponent<BookingFormProps> = ({
     };
 
     try {
-      if (selectedRawTechData) {
+      if (selectedRawTechData || (customTechs && customTechs.length >0)) {
         setIsLoading(true)
         const technologyArray = flattenTechnologyData(technologies, selectedRawTechData)
+        let customTechsData:{
+          item: string;
+      }[]=[]
+
+        if (!!customTechs){
+          customTechsData=customTechs.map(item=>{
+          return {
+            item: `${item.tech} (${item.quantity})`
+          }
+        })
+        }
+       
         const templateParams = {
           ...formData,
           technologies: technologyArray,
+          customTechnologies: customTechsData
         };
         await emailJs.send(serviceId, templateIdWithTechnologies, templateParams, {
           publicKey
@@ -119,12 +135,11 @@ const BookingForm: FunctionComponent<BookingFormProps> = ({
   };
 
 
-  const brandLogos =[
-    {brandUrl:"/al_rajhi_bank.png", alt:"al_rajhi"},
-    {brandUrl:"/alinma.png", alt:"alinma"},
-    {brandUrl:"/bank_albilad.png", alt:"bank_albilad"},
+  const brandLogos = [
+    { brandUrl: "/al_rajhi_bank.png", alt: "al_rajhi" },
+    { brandUrl: "/alinma.png", alt: "alinma" },
+    { brandUrl: "/bank_albilad.png", alt: "bank_albilad" },
   ]
-
 
   return (
 
@@ -266,9 +281,16 @@ const BookingForm: FunctionComponent<BookingFormProps> = ({
                     id="nda"
                     {...register('nda')}
                   />
-                  <label htmlFor="nda">I want to protect my data by signing an NDA.</label>
-                  <span style={{ marginBottom: '5px' }} title="A Non-Disclosure Agreement (NDA) is a confidentiality agreement.">&#x1F6C8;</span>
+                  <label htmlFor="nda" style={{ marginLeft: '10px' }}>I want to protect my data by signing an NDA.</label>
+                  <span className='tooltip' style={{ marginBottom: '5px', marginLeft: '5px' }} title="A Non-Disclosure Agreement (NDA) is a confidentiality agreement.">&#x1F6C8;</span>
                 </div>
+                <style jsx>{`
+        @media (max-width: 720px) {
+          .tooltip {
+            display: none;
+          }
+        }
+      `}</style>
               </div>
 
               <div className={styles.buttonContainer}>
@@ -304,10 +326,25 @@ const BookingForm: FunctionComponent<BookingFormProps> = ({
                       </div>
                     )}
                   </div>
-                ))}</Fragment>}
-
-
-
+                ))}
+                {customTechs !=undefined && customTechs.length>0 && <Fragment>
+                  <div  className={styles.categoryWrapper}>
+                  <div onClick={() => toggleCategory('CustomTech')} className={styles.mainCategory}>
+                      <h2>Custom Techs</h2>
+                      <EuiButtonIcon
+                        aria-label={`Toggle CustomTech`}
+                        iconType={expandedCategories.includes('CustomTech') ? 'arrowDown' : 'arrowRight'}
+                      />
+                    </div>
+                    {customTechs.map((tech,idx)=> <>
+                    {expandedCategories.includes('CustomTech') && <div key={idx} className={styles.subCategory}>
+                      <EuiText size='xs'>{tech.tech}: {tech.quantity}</EuiText>
+                    </div>}
+                    </>
+                    )}
+                  </div>
+                </Fragment>}
+              </Fragment>}
               <EuiHorizontalRule size='half' />
               <h3 className='contact-us'>Contact us</h3>
               <p>+966-34221121</p>
@@ -315,9 +352,9 @@ const BookingForm: FunctionComponent<BookingFormProps> = ({
               <div style={{ height: '20px' }}></div>
               <h4>Customers who trust us</h4>
 
-                {brandLogos.map((logo,idx)=>(
-              <Image width={100} height={80} src={logo.brandUrl} alt={logo.alt} key={idx}  style={{ width: '100px', height: 'auto', padding: '10px', cursor: 'pointer' }} />
-                ))}
+              {brandLogos.map((logo, idx) => (
+                <Image width={100} height={80} src={logo.brandUrl} alt={logo.alt} key={idx} style={{ width: '100px', height: 'auto', padding: '10px', cursor: 'pointer' }} />
+              ))}
             </div>
           </div>
         </div>
